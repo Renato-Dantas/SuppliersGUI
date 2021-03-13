@@ -71,7 +71,7 @@ def infoScreen(data):
         [sg.Text('Supplier Information', pad =(190,20), font = titleFont, size = (20,1), justification= 'c')],
         [sg.Text('ID:', font = font, pad = pad, size = size),sg.Input(data[0], font = font, size=(40,1), border_width= border, justification='c',key='-ID-')],
         [sg.Text('Name:', font = font, pad = pad, size = size),sg.Input(data[1], font = font, size=(40,1), border_width= border, justification='c', key= '-NAME-')],
-        [sg.Text('Area:', font = font, pad = pad, size = size),sg.Input(data[2], font = font, size=(40,1), border_width= border ,justification='c', key = '-AREA-')],
+        [sg.Text('Area:', font = font, pad = pad, size = size),sg.Input(data[2], font = font, size=(40,1), border_width= border ,justification='c', key = '-AREA-', disabled = True, disabled_readonly_background_color = 'black', disabled_readonly_text_color = 'white')],
         [sg.Text('City: ', font = font, pad = pad, size = size),sg.Input(data[3], font = font,  size=(40,1), border_width= border,justification='c', key = '-CITY-')],
         [sg.Text('Email: ', font = font, pad = pad, size = size),sg.Input(data[4], font = font,  size=(40,1), border_width= border,justification='c', key= '-EMAIL-')],
         [sg.Text('Phone 1: ', font = font, pad = pad, size = size),sg.Input(data[5], font = font,  size=(40,1), border_width= border,justification='c', key='-PHONE1-')],
