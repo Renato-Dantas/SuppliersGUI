@@ -96,7 +96,7 @@ def sampleTest():
     cursor = connector.cursor()
 
     # sup_id,name, area, city, email, phone1, phone2, link
-    supplier = [['001', 'Renato','TI', 'Hortolandia-SP','renato@gmail.com','19984754626', '1938457644', 'www.link.com'],['002', 'Cristiane','Logistica', 'Hortolandia-SP','Cris@gmail.com','19984754626', '1938457644', 'www.link.com'],['003', 'Emilly','TI', 'Hortolandia-SP','Emilly@gmail.com','19984754626', '1938457644', 'www.link.com']]
+    supplier = [['001', 'Renato','TI/INFORMATICA -MATERIAIS E SERVIÇOS', 'Hortolandia-SP','renato@gmail.com','19984754626', '1938457644', 'www.link.com'],['002', 'Cristiane','TI/INFORMATICA -MATERIAIS E SERVIÇOS', 'Hortolandia-SP','Cris@gmail.com','19984754626', '1938457644', 'www.link.com'],['003', 'Emilly','TI/INFORMATICA -MATERIAIS E SERVIÇOS', 'Hortolandia-SP','Emilly@gmail.com','19984754626', '1938457644', 'www.link.com']]
     insert = 'INSERT INTO supplier VALUES (?,?,?,?,?,?,?,?)'
 
     for i in supplier:
@@ -119,4 +119,3 @@ def updateTestSamples():
     data = selectAllData()
     print(data)
 
-#updateTestSamples()

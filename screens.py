@@ -6,8 +6,8 @@ sg.theme('Darkblue')
 # Tela de inicialização do programa
 def loginScreen():
     layout = [
-        [sg.Text('User:', pad = (50,15), font= font), sg.Input(key = 'user', size= (25,1), justification= 'center', focus= True, border_width=3)],
-        [sg.Text('Password:', pad = (30,0), font= font), sg.Input(key= 'password',password_char='*', size = (25,1), justification= 'center', pad = (0,5),border_width=3)],
+        [sg.Text('User:', pad = (50,15), font= font), sg.Input(key = '-USER-', size= (25,1), justification= 'center', focus= True, border_width=3)],
+        [sg.Text('Password:', pad = (30,0), font= font), sg.Input(key= '-PASSWORD-',password_char='*', size = (25,1), justification= 'center', pad = (0,5),border_width=3)],
         [sg.Button('Start', pad = (20,50), size=(10,1), font= font, border_width=5), sg.Button('Close', pad  = (0,50), size= (10,1), font = font, border_width=5)]
     ]
     return sg.Window('Login', layout,size = (500,230), element_justification='c',icon='logo.ico', finalize= True,grab_anywhere=True)
@@ -88,7 +88,7 @@ def tableScreen(data):
 
     layout = [
         [sg.Text('Report Area Information', font = titleFont,justification='c')],
-        [sg.Table(values = data, headings=header, auto_size_columns=True, justification='c',vertical_scroll_only=False,  font = font, header_font=titleFont, num_rows=20)],
+        [sg.Table(values = data, headings=header, auto_size_columns=True, justification='c',vertical_scroll_only=False,  font = font, header_font=titleFont, num_rows=20, max_col_width=100)],
         [sg.Button('Back', size=(10,1), border_width=5, font = font)]
     ]
 

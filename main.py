@@ -3,6 +3,9 @@ from screens import *
 from sqlFunctions import *
 from functions import *
 
+password = 'dantas'
+user = 'adm'
+
 login, options, searchArea, searchName, insert, info ,info_area= loginScreen(),None, None,None, None, None, None
 
 while True:
@@ -13,8 +16,11 @@ while True:
 
 # -------------------------------Login Screen------------------------------------------
     elif screen == login and event == 'Start': # if login is true, start the option screen
-        login.hide()
-        options = optionScreen()
+        if values['-PASSWORD-'] == password and values['-USER-'] == user:
+            login.hide()
+            options = optionScreen()
+        else:
+            sg.popup('Wrong user or password!\nPlease Try Again!', text_color='red', font =titleFont, title='Warning')
     elif screen == login and event == 'Close': # close de program using a button
         break
 
@@ -41,10 +47,9 @@ while True:
         area = values['-AREA-']
         data = searchSqlArea(area)
         if len(data)==0:
-            sg.popup('No data Found on This Area', no_titlebar=True, text_color= 'red',font = font)
+            sg.popup('No data Found on This Area', no_titlebar=True, text_color= 'red',font = font, title='Warning')
         else:
             searchArea.close()
-            print(data)
             info_area = tableScreen(data)
 
     elif screen == info_area and event == 'Back':
@@ -62,7 +67,7 @@ while True:
             searchName.close()
             info = infoScreen(data[0])
         except:
-            sg.popup('You must select a name on the list!', text_color='red')
+            sg.popup('You must select a name on the list!', text_color='red', title='Warning')
             searchName = searchNameScreen(listNames)
     
     elif screen == info and event == 'Update':
@@ -86,13 +91,13 @@ while True:
         ID, name, area, city, email, phone1, phone2, link = values['-ID-'],values['-NAME-'], values['-AREA-'], values['-CITY-'], values['-EMAIL-'], values['-PHONE1-'], values['-PHONE2-'], values['-LINK-']
 
         if ID =='' or name=='' or area=='' or city=='' or email=='' or len(phone1)<8:
-            sg.popup('You are trying to insert an incomplete record!\n\n Please complete all required information', font = font, no_titlebar= False, auto_close_duration= 5,text_color='red', auto_close=False)
+            sg.popup('You are trying to insert an incomplete record!\n\n Please complete all required information', font = font, auto_close_duration= 5,text_color='red', auto_close=False, title='Warning')
         else:
             try:
                 insertSqlValue(ID,name,area,city,email,phone1, phone2, link)
-                sg.popup(title = 'Registered Supplier!',auto_close_duration=5, no_titlebar=True, auto_close=True)
+                sg.popup('Saved successfully!',auto_close_duration=5, auto_close=True, title='Saved!')
             except:
-                sg.popup('You are trying to insert an incomplete record!', font = font, no_titlebar= True,auto_close_duration= 5,text_color='red', auto_close=True)
+                sg.popup('You are trying to insert an incomplete record!', font = font, no_titlebar= True,auto_close_duration= 5,text_color='red', auto_close=True, title='Warning')
 
     elif screen == insert and event == 'Cancel': #Clear all rows on the table
         insert.close()
